@@ -1,5 +1,9 @@
 let numeroCartas;
 let imagem;
+let num1 = 0;
+let num2 = 0;
+let numCarta1 = 0;
+let numCarta2 = 0;
 
 let cartas = [{num: 1, imagem:"img/bobrossparrot.gif"},
 {num: 2, imagem:"img/bobrossparrot.gif"},
@@ -55,24 +59,83 @@ function distribuirCartas () {
 
         quant ++;
     }
-
 }
 
 function virarCarta(elemento) {
 
-    for (let i = 0; i <= cartas.length; i++) {
-        let teste = elemento.classList.contains(`numero${i}`);
-
-        if (teste) {
-            const esconder = document.querySelector(`.numero${i}`).querySelector(".front-face");
-            esconder.classList.remove("front-face")
-            esconder.classList.add("virar-front");
-            const mostrar = document.querySelector(`.numero${i}`).querySelector(".back-face");
-            mostrar.classList.remove("back-face");
-            mostrar.classList.add("virar-back");
+    if (num1 === 0 || num2 === 0) {
+        for (let i = 1; i <= cartas.length; i++) {
+            let teste = elemento.classList.contains(`numero${i}`);
+            let igual;
+    
+            if (teste && num1 === 0) {
+                const esconder = document.querySelector(`.numero${i}`).querySelector(".front-face");
+                esconder.classList.remove("front-face");
+                esconder.classList.add("virar-front");
+                const mostrar = document.querySelector(`.numero${i}`).querySelector(".back-face");
+                mostrar.classList.remove("back-face");
+                mostrar.classList.add("virar-back");
+                num1 = 1;
+                numCarta1 = i;
+    
+                break;
+            } else if (teste && num1 === 1) {
+                const esconder = document.querySelector(`.numero${i}`).querySelector(".front-face");
+                esconder.classList.remove("front-face");
+                esconder.classList.add("virar-front");
+                const mostrar = document.querySelector(`.numero${i}`).querySelector(".back-face");
+                mostrar.classList.remove("back-face");
+                mostrar.classList.add("virar-back");
+    
+                num2 = 2;
+                numCarta2 = i;
+    
+                if (i % 2 === 0) {
+                    igual = document.querySelector(`.numero${i-1}`).querySelector(".virar-back");
+                } else {
+                    igual = document.querySelector(`.numero${i+1}`).querySelector(".virar-back");
+                }
+    
+                if (igual === null) {
+                    setTimeout(voltarCarta, 1000);
+                } else {
+                    num1 = 0;
+                    num2 = 0;
+                    numCarta1 = 0;
+                    numCarta2 = 0;
+                }
+                break;
+            }
         }
-
     }
+    
+}
+
+function voltarCarta() {
+    const esconder1 = document.querySelector(`.numero${numCarta1}`).querySelector(".virar-front");
+    esconder1.classList.remove("virar-front");
+    esconder1.classList.add("front-face");
+    
+    const mostrar1 = document.querySelector(`.numero${numCarta1}`).querySelector(".virar-back");
+    mostrar1.classList.remove("virar-back");
+    mostrar1.classList.add("back-face");
+
+    const esconder2 = document.querySelector(`.numero${numCarta2}`).querySelector(".virar-front");
+    esconder2.classList.remove("virar-front");
+    esconder2.classList.add("front-face");
+
+    const mostrar2 = document.querySelector(`.numero${numCarta2}`).querySelector(".virar-back");
+    mostrar2.classList.remove("virar-back");
+    mostrar2.classList.add("back-face");
+
+    num1 = 0;
+    num2 = 0;
+    numCarta1 = 0;
+    numCarta2 = 0;
+}
+
+function fimJogo() {
+
 }
 
 quantCartas();
