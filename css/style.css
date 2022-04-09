@@ -33,11 +33,13 @@ ul {
 }
 
 li {
-    margin: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
 li img {
@@ -45,16 +47,42 @@ li img {
     height: 100px;
 }
 
-.carta {
+.principal {
     width: 117px;
     height: 146px;
+    margin: 17px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carta {
+    width: 100%;
+    height: 100%;
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
-.escondida {
-    display: none;
+.front-face {
+    transform: rotateY(0deg);
+  }
+
+.back-face {
+    transform: rotateY(180deg);
+  }
+
+.virar-back {
+    transform: rotateY(0deg);
+}
+
+.virar-front {
+    transform: rotateY(-180deg);
 }
 
 @media screen and (max-width: 767px) {
@@ -67,7 +95,7 @@ li img {
         align-items: center;
     }
 
-    li:first-child {
+    div:first-of-type {
         margin-top: 0;
     }
 }
