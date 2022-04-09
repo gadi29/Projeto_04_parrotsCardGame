@@ -23,9 +23,7 @@ h1 {
 }
 
 main {
-    margin: 0 110px;
-    margin-top: 50px;
-    margin-bottom: 25px;
+    margin: 40px 110px;
 }
 
 ul {
@@ -35,8 +33,7 @@ ul {
 }
 
 li {
-    margin-right: 34px;
-    margin-top: 34px;
+    margin: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +51,10 @@ li img {
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+}
+
+.escondida {
+    display: none;
 }
 
 @media screen and (max-width: 767px) {
