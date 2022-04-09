@@ -1,5 +1,7 @@
 let numeroCartas;
 let imagem;
+let geral;
+let seg = 0;
 let num1 = 0;
 let num2 = 0;
 let numCarta1 = 0;
@@ -108,16 +110,15 @@ function virarCarta(elemento) {
                     numCarta2 = 0;
                 }
 
-                let geral = document.querySelectorAll(".front-face");
+                geral = document.querySelectorAll(".front-face");
 
                 if (geral.length === 0) {
-                    fimJogo();
+                    setTimeout(fimJogo, 400);
                 }
                 break;
             }
         }
     }
-    
 }
 
 function voltarCarta() {
@@ -144,7 +145,7 @@ function voltarCarta() {
 }
 
 function fimJogo() {
-    alert(`Você ganhou em ${clique} jogadas!`);
+    alert(`Você ganhou em ${clique} jogadas e em ${seg} segundos!`);
     let repetir = prompt("Você gostaria de reiniciar o jogo? (sim/não)");
 
     while ((repetir !== "sim") && (repetir !== "não")) {
@@ -158,4 +159,12 @@ function fimJogo() {
     }
 }
 
+function contarTempo() {
+    seg ++;
+
+    let cronometro = document.querySelector("h2");
+    cronometro.innerHTML = `${seg}`;
+}
+
 quantCartas();
+setInterval(contarTempo, 1000);
