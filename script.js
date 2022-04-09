@@ -4,6 +4,7 @@ let num1 = 0;
 let num2 = 0;
 let numCarta1 = 0;
 let numCarta2 = 0;
+let clique = 0;
 
 let cartas = [{num: 1, imagem:"img/bobrossparrot.gif"},
 {num: 2, imagem:"img/bobrossparrot.gif"},
@@ -63,6 +64,8 @@ function distribuirCartas () {
 
 function virarCarta(elemento) {
 
+    clique ++;
+
     if (num1 === 0 || num2 === 0) {
         for (let i = 1; i <= cartas.length; i++) {
             let teste = elemento.classList.contains(`numero${i}`);
@@ -104,6 +107,12 @@ function virarCarta(elemento) {
                     numCarta1 = 0;
                     numCarta2 = 0;
                 }
+
+                let geral = document.querySelectorAll(".front-face");
+
+                if (geral.length === 0) {
+                    fimJogo();
+                }
                 break;
             }
         }
@@ -135,7 +144,18 @@ function voltarCarta() {
 }
 
 function fimJogo() {
+    alert(`Você ganhou em ${clique} jogadas!`);
+    let repetir = prompt("Você gostaria de reiniciar o jogo? (sim/não)");
 
+    while ((repetir !== "sim") && (repetir !== "não")) {
+        repetir = prompt("Você gostaria de reiniciar o jogo? (sim/não)");
+    }
+
+    if (repetir === "sim") {
+        document.location.reload(true);
+    } else if (repetir === "não") {
+        window.close();
+    }
 }
 
 quantCartas();
