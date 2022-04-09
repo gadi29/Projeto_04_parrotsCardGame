@@ -1,12 +1,10 @@
 let numeroCartas;
-let imagem;
-let geral;
 let seg = 0;
+let clique = 0;
 let num1 = 0;
 let num2 = 0;
 let numCarta1 = 0;
 let numCarta2 = 0;
-let clique = 0;
 
 let cartas = [{num: 1, imagem:"img/bobrossparrot.gif"},
 {num: 2, imagem:"img/bobrossparrot.gif"},
@@ -110,7 +108,7 @@ function virarCarta(elemento) {
                     numCarta2 = 0;
                 }
 
-                geral = document.querySelectorAll(".front-face");
+                let geral = document.querySelectorAll(".front-face");
 
                 if (geral.length === 0) {
                     setTimeout(fimJogo, 400);
