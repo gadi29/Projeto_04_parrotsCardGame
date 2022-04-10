@@ -13,6 +13,7 @@ header {
     margin-top: 40px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 h1 {
@@ -23,9 +24,8 @@ h1 {
 }
 
 span {
-    position: fixed;
-    top: 96px;
-    right: 70px;
+    position: absolute;
+    right: 30px;
     width: 75px;
     height: 50px;
     background-color: black;
@@ -43,7 +43,7 @@ h2 {
 }
 
 main {
-    margin: 60px 110px;
+    margin: 40px 110px;
 }
 
 ul {
@@ -112,10 +112,6 @@ li img {
 
     span {
         display: none;
-    }
-
-    main {
-        margin: 40px 110px;
     }
 
     ul {
