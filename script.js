@@ -23,7 +23,7 @@ let cartas = [{num: 1, imagem:"img/bobrossparrot.gif"},
 
 function quantCartas () {
 
-    numeroCartas = Number(prompt("Com quantas cartas você deseja jogar?"));
+    numeroCartas = Number(prompt("Com quantas cartas você deseja jogar? (insira um número par entre 4 e 14)"));
     let cartasPar = (numeroCartas % 2) === 0;
     let numMin = numeroCartas < 4;
     let numMax = numeroCartas > 14;
